@@ -11,6 +11,7 @@ class ToDoListController extends Controller
     function __construct(){
 
         $this->task= new Task;
+        
     }
 
     function index() {
@@ -22,7 +23,8 @@ class ToDoListController extends Controller
     function saveTask(Request $request){
 
         $data =[
-            'task_name' => $request->taskname
+            'task_name' => $request->taskname,
+            'description' => $request->description
         ]; 
         
         $this->task->saveTask($data);
@@ -44,7 +46,8 @@ class ToDoListController extends Controller
     }
     function saveUpdatedTask(Request $request){
         $data =[
-            'task_name' => $request->updatetask
+            'task_name' => $request->updatetask,
+            'description' =>$request->updatedescription
         ];
         
         $this->task->updateTask($data, $request->id);
